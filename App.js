@@ -6,6 +6,8 @@ import Logo from "./Components/Logo"
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favorites from './Components/Favorites';
+import MyAccount from './Components/MyAccount';
+import Search from './Components/Search';
 
 
 const HomeStack = createStackNavigator();
@@ -41,6 +43,30 @@ function HomeStackScreen() {
   );
 }
 
+const SearchStack = createStackNavigator();
+
+function SearchStackScreen() {
+  return (
+    <SearchStack.Navigator
+      initialRouteName="Search"
+      screenOptions={{
+        headerStyle: { elevation: 0, shadowColor: 'transparent' },
+        cardStyle: { background: '#fff' },
+      }}
+    >
+      <SearchStack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: true,
+          headerTitle: props => <Logo {...props} />,
+          headerBackTitle: ' '
+        }}
+      />
+    </SearchStack.Navigator>
+  );
+}
+
 
 const FavoritesStack = createStackNavigator();
 
@@ -66,6 +92,32 @@ function FavoritesStackScreen() {
   );
 }
 
+
+const MyAccountStack = createStackNavigator();
+
+function MyAccountStackScreen() {
+  return (
+    <MyAccountStack.Navigator
+      initialRouteName="MyAccount"
+      screenOptions={{
+        headerStyle: { elevation: 0, shadowColor: 'transparent' },
+        cardStyle: { background: '#fff' },
+      }}
+    >
+      <MyAccountStack.Screen
+        name="MyAccount"
+        component={MyAccount}
+        options={{
+          headerShown: true,
+          headerTitle: props => <Logo {...props} />,
+          headerBackTitle: ' '
+        }}
+      />
+    </MyAccountStack.Navigator>
+  );
+}
+
+
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -73,7 +125,9 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="Home" component={HomeStackScreen} />
+        <Tab.Screen name="Search" component={SearchStackScreen} />
         <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
+        <Tab.Screen name="MyAccount" component={MyAccountStackScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
