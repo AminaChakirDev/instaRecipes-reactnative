@@ -14,9 +14,9 @@ export default function Recipe({ route }) {
             <WebView
                 originWhitelist={['*']}
                 source={{ html: `<iframe src=${recipe.item.instaLink} width="970" height="1075" frameborder="0" scrolling="no" allowtransparency="true"></iframe>` }}
-                style={{ marginTop: 10 }}
+                style={{ marginTop: 10, flex: 2 }}
             />
-            <ScrollView>
+            <ScrollView style={{ flex: 2 }}>
                 <Text style={styles.subTitle}>Ingrédients</Text>
                 <Text style={styles.content}>flatlist liste ingrédient</Text>
                 <Text style={styles.subTitle}>Préparation</Text>
@@ -43,12 +43,12 @@ const styles = StyleSheet.create({
     subTitle: {
         color: '#2C001B',
         fontFamily: 'Helvetica Neue',
-        fontSize: 20,
+        fontSize: 18,
         marginTop: 20
     },
     content: {
         color: '#2C001B',
         fontFamily: 'Helvetica Neue',
-        fontSize: 20,
+        fontSize: 16,
     },
 });
